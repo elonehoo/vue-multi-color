@@ -1,0 +1,17 @@
+{
+  "name": "@elonehoo/example-vue",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev":"vite --port 3333 --open",
+    "build": "vite build",
+    "preview": "vite preview --port 8766 --open"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vue-router":"4.0.15"
+  }
+}
