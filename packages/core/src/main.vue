@@ -29,7 +29,6 @@
 </template>
 
 <style scoped>
-
 .multiColor {
   background:linear-gradient(v-bind('angle'),
     v-bind('props.color1') 0%, v-bind('props.color1') 9%,
