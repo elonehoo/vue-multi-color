@@ -12,9 +12,9 @@
     "coverage": "vitest run --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "example:dev": "npm -C example run dev",
-    "example:build": "npm -C example run build",
-    "example:preview": "npm -C example run preview"
+    "example:dev": "npm -C example/vue run dev",
+    "example:build": "npm -C example/vue run build",
+    "example:preview": "npm -C example/vue run preview"
   },
   "devDependencies": {
     "@elonehoo/eslint-config": "^2.0.0",

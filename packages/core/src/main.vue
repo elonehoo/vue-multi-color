@@ -1,54 +1,69 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
-const props = defineProps(['name'])
-
-const emit = defineEmits([
-  'go',
-  'update:name'
-])
-
-function go(){
-  emit('go')
-}
-
-const name = computed({
-  get() {
-    return props.name
-  },
-  set(value) {
-    emit('update:name', value)
-  }
-})
-
+const props = withDefaults(defineProps<{
+    color1?:string,
+    color2?:string,
+    color3?:string,
+    color4?:string,
+    color5?:string,
+  }>(),{
+    color1:'#01579B',
+    color2:'#00838F',
+    color3:'#FFD600',
+    color4:'#FF4081',
+    color5:'#F44336'
+  })
 </script>
 
 <template>
-  <div>
-    <div class="text-4xl inline-block i-carbon-wave-direction" />
-
-    <p>Vitem</p>
-
-    <p>
-      <em class="opacity-75 text-sm">
-        Opinionated Vue Vite Starter Template
-      </em>
-    </p>
-
-    <div class="py-4" />
-
-    <input
-      v-model="name"
-      placeholder="What's your name?"
-      class="px-4 py-2 w-64 text-center bg-transparent outline-none border rounded border-solid border-gray-200 dark:border-gray-700 active:outline-none"
-      autoComplete="false"
-      type="text"
-    >
-
-    <div>
-      <button @click="go" :disabled="props.name.length <= 0" class="m-3 text-sm btn">
-        Go
-      </button>
+    <div :class="classes.multiColor">
+      <slot/>
     </div>
-  </div>
 </template>
+
+
+<style module="classes">
+:root{
+  --color1: v-bind('props.color1');
+  --color2: v-bind('props.color2');
+  --color3: v-bind('props.color3');
+  --color4: v-bind('props.color4');
+  --color5: v-bind('props.color5');
+}
+.multiColor {
+  background:linear-gradient(225deg,
+    var(--color1) 0%, var(--color1) 9%,
+    transparent 9%, transparent 10%,
+    var(--color2) 10%, var(--color2) 19%,
+    transparent 19%, transparent 20%,
+    var(--color3) 20%, var(--color3) 29%,
+    transparent 29%, transparent 30%,
+    var(--color4) 30%, var(--color4) 39%,
+    transparent 39%, transparent 40%,
+    var(--color5) 40%, var(--color5) 49%,
+    transparent 49%, transparent 50%,
+    var(--color1) 50%, var(--color1) 59%,
+    transparent 59%, transparent 60%,
+    var(--color2) 60%, var(--color2) 69%,
+    transparent 69%, transparent 70%,
+    var(--color3) 70%, var(--color3) 79%,
+    transparent 79%, transparent 80%,
+    var(--color4) 80%, var(--color4) 89%,
+    transparent 89%, transparent 90%,
+    var(--color5) 90%, var(--color5) 99%,
+    transparent 99%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 200% 200%;
+  color: transparent;
+  animation: move 4s linear infinite;
+}
+@keyframes move {
+  0%{
+    background-position: 0px 100%;
+  }
+  100%{
+    background-position: 100% 0px;
+  }
+}
+</style>
