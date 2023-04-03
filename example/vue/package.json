@@ -12,6 +12,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "vue-router":"4.1.5"
+    "vue-router":"4.1.6"
   }
 }
